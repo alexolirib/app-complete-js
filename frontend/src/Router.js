@@ -1,6 +1,5 @@
 import React from 'react'
 import App from './App'
-import Task from './components/Task/Task'
 import About from './components/About/About'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 

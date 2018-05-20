@@ -11,7 +11,7 @@ export default props => (
             onChange={props.change}
             placeholder="Adicione tarefa" />
         <Grid cols='12 3 2'>
-            <IconButton icon="plus" />
+            <IconButton icon="plus" style="secondary" />
         </Grid >
     </form>
 )

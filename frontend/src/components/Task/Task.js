@@ -36,27 +36,38 @@ class Task extends Component {
         //     return prevState;
         // })
 
-        let description = this.state.description
         axios.post(this.state.url, obj)
-            .then(resp => console.log("funcionou"))
+            .then(resp => this.refresh())
 
-        this.setState({ description: "" })
+        //this.setState({ description: ""})
+        
     }
 
     refresh = () => {
         axios.get(this.state.url)
-            .then(resp => {
-                for (let data of resp.data) {
-                    this.setState(prevState => {
-                        prevState.list.push(data);
-                        return prevState;
-                    })
-                }
-            });
+            .then(resp => this.setState({...this.state.list, description: '', list: resp.data}))
     }
+    
 
     componentWillMount = () => {
         this.refresh();
+    }
+
+    handleRemove = (element) =>{
+        axios.delete(`${this.state.url}/${element._id}`)
+         .then(this.refresh())
+            
+    }
+
+    handleDoneTrue = (element) =>{
+        axios.put(`${this.state.url}/${element._id}`,{...element, done: true})
+            .then(this.refresh())
+    }
+
+    handleDoneFalse = (element) =>{
+        console.log("Entoru no false");
+        axios.put(`${this.state.url}/${element._id}`,{...element, done: false})
+            .then(this.refresh())
     }
 
     render() {
@@ -67,7 +78,10 @@ class Task extends Component {
                     change={this.handleChangeDescription}
                     submit={this.treatSubmit} />
                 <br />
-                <TaskList />
+                <TaskList listTask={this.state.list}
+                 delete={this.handleRemove}
+                 doneTrue={this.handleDoneTrue}
+                 doneFalse={this.handleDoneFalse} />
             </div>
         )
     }

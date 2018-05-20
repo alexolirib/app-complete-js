@@ -4,8 +4,14 @@ import List from './List'
 const TaskList = props => {
 
     const setList = () => {
-        const test = [{ descriprion: "testando", id: 1 },{ descriprion: "aaaaaaaaaaaaaaa", id: 2 }]
-        return test.map(list => <List {...list}/>)
+        let expre = "-";
+        return props.listTask.map(list =>   <List key={list._id} 
+            id={expre} 
+            {...list} 
+            elemento={list} 
+            remove={props.delete}
+            doneTrue={props.doneTrue}
+            doneFalse={props.doneFalse}  />  )
             
         
     }
@@ -16,6 +22,7 @@ const TaskList = props => {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Descrição</th>
+                    <th scope="col">AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
