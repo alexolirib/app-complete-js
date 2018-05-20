@@ -9,11 +9,11 @@ export default props => (
                 Task
             </NavLink>
         </div>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
+        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item">
                 <NavLink className="nav-link" to="/task">Task</NavLink>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                 <NavLink className="nav-link" to="/about">about</NavLink>
             </li>
         </ul>
