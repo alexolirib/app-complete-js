@@ -39,7 +39,7 @@ class Task extends Component {
         axios.post(this.state.url, obj)
             .then(resp => this.refresh())
 
-        //this.setState({ description: ""})
+        this.setState({ description: ""})
         
     }
 
@@ -69,7 +69,7 @@ class Task extends Component {
         axios.put(`${this.state.url}/${element._id}`,{...element, done: false})
             .then(this.refresh())
     }
-
+    
     render() {
         return (
             <div>                

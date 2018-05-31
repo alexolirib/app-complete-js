@@ -1,6 +1,6 @@
 import React from 'react';
 import If from './If'
-
+    
 const IconButton = (props) =>(
     <If test = {!props.hide}>
         <button className={`btn btn-${props.style}`} type="submit"

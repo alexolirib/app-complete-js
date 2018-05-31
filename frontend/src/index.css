@@ -10,4 +10,5 @@ body {
 
 .markedDone{
   text-decoration: line-through;
+  color: darkred;
 }
