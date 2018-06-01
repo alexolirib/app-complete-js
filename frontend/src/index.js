@@ -5,17 +5,25 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Router from './Router';
-import { createStore} from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
-
 import Task from './components/Task/Task'
 import Menu from './components/templetes/Menu'
-import taskReducer from './components/Reducers/TaskReducer'
+import configReducer from './components/Reducers/configReducer'
+//middleware
+import promise from 'redux-promise'
+import multi from 'redux-multi'//poder fazer multi dispatch (interessante para fazer refresh como banco )
+import thunk from 'redux-thunk'//poder tratar a promise que é feito quando se é utilizado em multi dispatch
 
-const store = createStore(taskReducer);
+//poder visualizar os stores, reducer na extensão do chrome
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+    && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const Aplicacao = ()=>(
-    <Provider>
+//aplicando aqui o middleware vou poder trabalhar request http,(chamada de 3 metodos  )
+const store = applyMiddleware(thunk, multi, promise)(createStore)(configReducer, devTools);
+
+const Aplicacao = () => (
+    <Provider store={store}>
         <Router />
     </Provider>
 )

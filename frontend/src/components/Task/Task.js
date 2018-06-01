@@ -65,7 +65,7 @@ class Task extends Component {
     }
 
     handleDoneFalse = (element) =>{
-        console.log("Entoru no false");
+        //console.log("Entoru no false");
         axios.put(`${this.state.url}/${element._id}`,{...element, done: false})
             .then(this.refresh())
     }
@@ -78,7 +78,7 @@ class Task extends Component {
                     change={this.handleChangeDescription}
                     submit={this.treatSubmit} />
                 <br />
-                <TaskList listTask={this.state.list}
+                <TaskList /*antes vinha do state list={this.state.list}, agora do store */
                  delete={this.handleRemove}
                  doneTrue={this.handleDoneTrue}
                  doneFalse={this.handleDoneFalse} />

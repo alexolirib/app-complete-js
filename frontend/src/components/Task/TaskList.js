@@ -1,11 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import List from './List'
 
 const TaskList = props => {
 
     const setList = () => {
         let expre = "-";
-        return props.listTask.map(list =>   <List key={list._id} 
+        return props.list.map(list =>   <List key={list._id} 
             id={expre} 
             {...list} 
             elemento={list} 
@@ -32,4 +33,7 @@ const TaskList = props => {
     )
 }
 
-export default TaskList;
+//aqui irá mapear os stores que estam nos meus stores (reducer)
+const mapStateProps = state => ({list: state.task.list})
+
+export default connect(mapStateProps)(TaskList);
