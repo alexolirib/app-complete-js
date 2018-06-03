@@ -22,3 +22,23 @@ export const add = (description) =>{
             .then(resp=> dispatch(search()))
     }
 }
+export const markAsDone = task =>{
+    return dispatch =>{
+        axios.put(`${URL}/${task._id}`, {...task, done:true})
+            //aqui o resp.data recebo somente o obj 
+            .then(resp=>dispatch({type: 'TODO_MASKED_AS_DONE', payload: resp.data}))
+            .then(resp=>dispatch(search()))
+    }
+}
+export const markDontDone = task =>{
+    return dispatch =>{
+        axios.put(`${URL}/${task._id}`, {...task, done:false})
+            .then(resp=>dispatch(search()))
+    }
+}
+export const deleteElement = task =>{
+    return dispatch =>{
+        axios.delete(`${URL}/${task._id}`)            
+            .then(resp=>dispatch(search()));
+    }
+}

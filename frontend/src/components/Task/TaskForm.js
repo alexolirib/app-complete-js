@@ -32,8 +32,10 @@ class TaskForm extends Component {
                     value={this.props.description}
                     onChange={this.props.changeDescription}
                     placeholder="Adicione tarefa" />
-                <Grid cols='12 3 2'>
-                    <IconButton icon="plus" style="secondary" />
+                <Grid cols={'12 3 2'}>
+                    <IconButton
+                    icon={'plus'} 
+                    styles={'secondary'} ></IconButton>
                 </Grid >
             </form>
         )

@@ -23,9 +23,9 @@ export default props => {
             <td className={props.done ? 'markedDone': ''} >{props.description}</td>
             <td>
 
-                <Button style={"success"} onClick={acaoMarcar} icon="check" />
-                <Button style={"warning"} onClick={acaoDesmarcar} icon="undo" />
-                <Button style={"danger"} onClick={acaoExcluisao} icon="trash-o" />
+                <Button styles={"success"} onClick={acaoMarcar} icon="check" />
+                <Button styles={"warning"} onClick={acaoDesmarcar} icon="undo" />
+                <Button styles={"danger"} onClick={acaoExcluisao} icon="trash-o" />
             </td>
         </tr>
     )

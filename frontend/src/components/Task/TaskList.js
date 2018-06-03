@@ -1,22 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import List from './List'
+import { markAsDone, markDontDone, deleteElement } from '../Actions/TaskAction'
 
 const TaskList = props => {
 
     const setList = () => {
         let expre = "-";
-        return props.list.map(list =>   <List key={list._id} 
-            id={expre} 
-            {...list} 
-            elemento={list} 
-            remove={props.delete}
-            doneTrue={props.doneTrue}
-            doneFalse={props.doneFalse}  />  )
-            
-        
+        return props.list.map(list => <List key={list._id}
+            id={expre}
+            {...list}
+            elemento={list}
+            remove={props.deleteElement}
+            doneTrue={props.markAsDone}
+            doneFalse={props.markDontDone} />)
+
+
     }
-    
+
     return (
         <table className="table">
             <thead className="thead-dark">
@@ -34,6 +36,8 @@ const TaskList = props => {
 }
 
 //aqui irá mapear os stores que estam nos meus stores (reducer)
-const mapStateProps = state => ({list: state.task.list})
+const mapStateProps = state => ({ list: state.task.list })
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({markAsDone, markDontDone, deleteElement}, dispatch)
 
-export default connect(mapStateProps)(TaskList);
+export default connect(mapStateProps, mapDispatchToProps)(TaskList);

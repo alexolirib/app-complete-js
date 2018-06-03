@@ -7,8 +7,6 @@ import 'font-awesome/css/font-awesome.min.css'
 import Router from './Router';
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
-import Task from './components/Task/Task'
-import Menu from './components/templetes/Menu'
 import configReducer from './components/Reducers/configReducer'
 //middleware
 import promise from 'redux-promise'
